@@ -1,4 +1,22 @@
-- HTML form with username, email, password fields
-- Shows validation errors using flash messages
-- POST method to submit data to /register route
-- Link to login page for existing users
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Register</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <p style="color:red">{{ msg }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+        Username: <input type="text" name="username" required><br><br>
+        Email: <input type="email" name="email" required><br><br>
+        Password: <input type="password" name="password" required><br><br>
+        <input type="submit" value="Sign Up">
+    </form>
+    <a href="/login">Already have account? Login</a>
+</body>
+</html>
